@@ -1,13 +1,9 @@
----
-layout: default
-tagline: site.tagline
----
-<h1>{{ page.title }}{% if page.tagline %} <small>{{ page.tagline }}</small>{% endif %}</h1>
+<h3>{{ page.title }}{% if page.tagline %} <small>{{ page.tagline }}</small>{% endif %}</h3>
 <span class="time">{{ page.date | date_to_string }}</span>
 
 <div class="content">
 	<div class="post">{{ content }}</div>
-	<!-->enable comments module<-->
+	<!--enable comments module-->
     <hr>
     {% include JB/comments %}
 </div>

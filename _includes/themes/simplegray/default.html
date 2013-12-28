@@ -12,14 +12,17 @@
         <!-- Custom CSS -->
         <link rel="stylesheet" href="{{ BASE_PATH }}/simple_gray_css/main.css">
 
+		<link href="{{ ASSET_PATH }}/bootstrap/css/bootstrap.2.2.2.min.css" rel="stylesheet">
+		<link href="{{ ASSET_PATH }}/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
     </head>
     <body>
 
 		<div id="container">
 
 			<div class="left">
-				<h1>{{ site.name }}</h1>
-				<img id="about" src="{{ BASE_PATH }}/img/avatar.jpg" height="75px" width="75px" /><br />	
+				<h4>{{ site.name }}</h4>
+				<img id="about" src="{{ BASE_PATH }}/imgs/avatar.jpg" height="75px" width="75px" /><br />	
 
 				<strong>navigation</strong><br />
 				<a href="/">home</a> <br />
