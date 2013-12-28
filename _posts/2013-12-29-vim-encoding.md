@@ -13,7 +13,7 @@ title: vim encoding
 
 检查了下terminal的字符集是设置成utf-8的，于是得出结论：	脚本的编码不是utf-8.
 
-仔细看了下vim的配置：
+仔细看了下vim的配置:
 	set encoding=utf-8
 	set fileencoding=prc " same as euc-cn
 	set fileencodings=utf-8,gb2312,gbk,gb18030
@@ -21,16 +21,21 @@ title: vim encoding
 显然，罪魁祸首是`set fileencoding=prc`，因为这导致了存储保存编码为prc而不是utf-8
 
 ### 看完帮助文档的总结:
-- **encoding**
-  enc，表示vim处理时使用的编码格式，加入文件存储在磁盘的格式与encoding值不同，那么就会转换成这个格式，官方建议值utf-8
-- **fileencoding**
+- **encoding** <br/>
+  enc，表示vim内部处理时使用的编码格式，假如文件存储在磁盘的格式与encoding值不同，那么就会转换成这个格式，官方建议值utf-8
+- **fileencoding** <br/>
   fenc，表示vim认为的文件格式，当打开一个已有的文件时，这个变量值取决于fileencodings，如果fileencodings没有认出来，fenc就取手工设置的值，如果没有赋予初值，那fenc就取enc的值，fenc的值很重要是因为他将决定文件保存到磁盘里的文件编码。如果时新建的文件，那么fenc值就取vimrc里设置的初值，这就是为什么我的脚本文件保存成prc格式。
-- **fileencodings**
+- **fileencodings** <br/>
   fencs，其值为list，代表打开已有文件时，vim猜测文件编码的顺序。当vim认为属于某个编码时，就会将fenc也设置为猜测的编码值，这样存储时也会保证和原编码一致。
 
-### tips:
+### TIPS:
 	可以在打开文件后，手动运行:set fenc=XXXX以改变保存时希望使用的文件编码。
 	当然也可以使用iconv等工具改变编码：）
+	可以指定文件编码打开，比如:e ++enc=utf-8 file
+
+借鉴了<a href="http://edyfox.codecarver.org/html/vim_fileencodings_detection.html">这里</a>，同时考虑我用的OSX，最后我把配置改成:
+	set encoding=utf-8
+	set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 
 ### TODO：
 	文件编码好多，看到vim帮助文档直接列举了如下这些点，有空要了解一下:)
